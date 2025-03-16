@@ -53,3 +53,13 @@ You can run the following demos:
 * converhence_demo:
      	
 &nbsp;&nbsp;&nbsp; examine the rate of convergence of the signal recovery or the graph learning methods versus (iteration) time
+
+
+===============================================================
+Please cite:
+
+A. Javaheri, A. Amini, F. Marvasti and D. P. Palomar, "Learning Spatiotemporal Graphical Models From Incomplete Observations," in IEEE Transactions on Signal Processing, vol. 72, pp. 1361-1374, 2024, doi: 10.1109/TSP.2024.3354572.
+
+A. Javaheri, A. Amini, F. Marvasti and D. P. Palomar, "Joint Signal Recovery and Graph Learning from Incomplete Time-Series," ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Seoul, Korea, Republic of, 2024, pp. 13511-13515, doi: 10.1109/ICASSP48485.2024.10448021.
+
+
