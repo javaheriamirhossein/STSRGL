@@ -14,6 +14,7 @@ std_n = 0.1;    % noise level
 C_n_inv = 100*eye(N);    % noise inverse cov matrix
 AVAR_type = 'randl';
 A_Normalization = 'norm';
+Normalization = 'trace';
 W_thr = 0.05;    % threshold on the weights 
 A_thr = 0.7;     % VAR matrix threshold
 epsilon = 1;
