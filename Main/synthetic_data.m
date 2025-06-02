@@ -149,7 +149,7 @@ e(e <= 1e-6) = 0;
 e = 1./e; 
 e(e == Inf) = 0;
 e(isnan(e)) = 0;
-Linv_matrix = (U*diag(e)*U');  
+Linv_matrix = (U*diag(e.^0.5)*U');  
 
 
 
