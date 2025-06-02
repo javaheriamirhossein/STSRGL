@@ -149,7 +149,7 @@ e(e <= 1e-6) = 0;
 e = 1./e; 
 e(e == Inf) = 0;
 e(isnan(e)) = 0;
-Linv_matrix = (U*diag(e.^0.5)*U');  
+Linv_sqrt_matrix = (U*diag(e.^0.5)*U');  
 
 
 
@@ -201,7 +201,7 @@ Noise = Noise - repmat(mean(Noise,2),1,T);
 std_rows = std(Noise,[],2);
 Noise = diag(1./std_rows)*Noise;
 
-X(:,1) = Linv_matrix* Noise(:,1);
+X(:,1) = Linv_sqrt_matrix* Noise(:,1);
 
 
 
@@ -214,7 +214,7 @@ for k = 2:T
             temp = temp + AVAR_true_cell{p}*X(:,k-p) ;
         end
     end
-    X(:,k) = temp + Linv_matrix*f + fdc;
+    X(:,k) = temp + Linv_sqrt_matrix*f + fdc;
 end
 
 % ----- sampling matrix ------
