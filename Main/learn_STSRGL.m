@@ -208,14 +208,14 @@ if isfield(params,'L0')
 else
 
     w = w_from_L(S_inv-J);
-    w = w + 0.01*mean(w);
+
     
     if strcmp(Normalization, 'trace')==1
         w = w/sum(w)*N/2;
     elseif strcmp(Normalization, 'max')==1
         w = w/max(w);
     end
-    L = L_operator(w);
+    L = L_operator_mex(w);
 
 end
 
@@ -252,7 +252,7 @@ for i=1:maxIter
         Dx = (Cx*Cx');
         K = ( Sx - Bx - Bx' + Dx + 2*alpha_0 * Hoff)/T;
     
-        r = conj_L_operator( K );
+        r = conj_L_operator_mex( K );
         f_joint = T*sum(w.*r);
     end
 
@@ -353,7 +353,7 @@ for i=1:maxIter
 
             U = X - A*X_1;
             K = ( (U*U')  + 2*alpha_0 * Hoff)/T;    
-            r = conj_L_operator( K );
+            r = conj_L_operator_mex( K );
             
              
             [U,Lamb] = eig(L + J);
@@ -366,7 +366,7 @@ for i=1:maxIter
             lambs = 1./lambs;
             L_inv = (U*diag(lambs)*U');        
     
-            q =  conj_L_operator( L_inv );
+            q =  conj_L_operator_mex( L_inv );
             zeta = tau.*w.^2;
             ratio = (zeta + 1).* q ./ (zeta.*q+r);
             w_new = w.* sqrt(ratio);
@@ -385,13 +385,13 @@ for i=1:maxIter
            
             
             w = w_new;
-            L = L_operator(w);
+            L = L_operator_mex(w);
             
 
             if compute_error_L
                 what = w;
                 what( what< (W_thr*max(w)) ) = 0;
-                Lhat = L_operator(what);
+                Lhat = L_operator_mex(what);
                 if strcmp(Normalization, 'trace')==1
                     Lhat = Lhat/trace(Lhat)*N;
                 elseif strcmp(Normalization, 'max')==1
@@ -420,7 +420,7 @@ end
 
 fprintf('STSRGL finished at iteration %d\n',i);
 
-L = L_operator(w);
+L = L_operator_mex(w);
 
 if compute_error_X
     output.error_X = errors_X;
