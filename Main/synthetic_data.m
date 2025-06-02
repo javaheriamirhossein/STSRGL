@@ -154,6 +154,7 @@ Linv_sqrt_matrix = (U*diag(e.^0.5)*U');
 
 
 
+
 %% Generate the AVAR transition matrix 
 %-------------------------
 
